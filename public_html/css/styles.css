@@ -1,0 +1,254 @@
+/* 
+    Created on : 6 mars 2017, 12:22:12
+    Author     : baptiste thevenet
+*/
+@font-face {
+    font-family: adamCgPro;
+    src: url(../adamcg_pro.otf)
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+nav .w3-bar {
+    height: 100px;
+    transition: all .25s;
+}
+
+nav .w3-bar:hover {
+    background-color: #000;
+}
+
+nav .w3-bar > * {
+    height: 100%;
+}
+
+nav .w3-button {
+    font-family: adamCgPro;
+    height: 100%;
+    padding-top: 16px!important;
+    padding-bottom: 16px!important;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #fff!important;
+    transition: color .25s, background-color 0s;
+    background-color: transparent!important;
+}
+
+nav .w3-button:hover, nav .w3-dropdown-click:hover {
+    background-color: transparent!important;
+    color: #bd1521!important;
+}
+
+nav img {
+    height: 100%;
+}
+
+nav i.fa {
+    color: #bd1521;
+}
+
+.w3-dropdown-content a {
+    background-color: rgba(0,0,0,0.5);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    padding: 12px 32px;
+    filter: grayscale(50%);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    transition: all .25s;
+}
+
+.w3-dropdown-content a:hover {
+    filter: grayscale(0%);
+}
+
+.content {
+    height: 100%;
+}
+
+.slideshow {
+    height: 100%;
+    background-color: #000;
+}
+
+.slideshow > button {
+    color: #bd1521;
+    border: 1px solid;
+    transition: all .25s;
+}
+
+.slideshow > button:hover {
+    color: #fff!important;
+    background-color: #bd1521!important;
+}
+
+.slide {
+    height: 80%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-animation: opac 0.8s;
+    animation: opac 0.8s;
+}
+
+@keyframes opac {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+.slide-content {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    width: 50%;
+    color: #fff;
+
+}
+
+.slide-content h2 {
+    -webkit-animation: translate 0.4s;
+    animation: translate 0.4s both;
+}
+
+.slide-content p {
+    -webkit-animation: translate 0.4s;
+    animation: translate 0.4s 0.2s both;
+}
+
+.slide-content a {
+    -webkit-animation: translate 0.4s;
+    animation: translate 0.4s 0.4s both;
+}
+
+@keyframes translate {
+    0% {
+        opacity: 0;
+        transform: translateX(-10%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+.slide-content p {
+    font-style: italic;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.slide-content a {
+    font-style: italic;
+    color: #bd1521;
+    border: 1px solid;
+    transition: all .25s;
+}
+
+.slide-content a:hover {
+    background-color: #bd1521!important;
+    color: #fff!important;
+}
+
+.indicators {
+    height: 20%;
+    background-color: #bd1521;
+
+}
+
+.indicators > * {
+    height: 100%;
+}
+
+.indicator {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.indicator .indicator-content {
+    display: flex;
+    color: #fff;
+    background-color: #bd1521;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-100%);
+    transition: all .25s;
+}
+
+.indicator:hover .indicator-content {
+    transform: translateY(0%);
+}
+
+.indicator .indicator-content > div {
+    margin: auto;
+}
+
+footer {
+    color: #fff;
+    background-color: #000;
+}
+
+.sitemap {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #bd1521;
+}
+
+.sitemap p {
+    color: #bd1521;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.sitemap a {
+    text-decoration: none;
+    transition: all .25s;
+}
+
+.sitemap a:hover {
+    text-decoration: underline;
+    color: #bd1521;
+}
+
+.informations {
+    text-align: center;
+}
+
+.informations ul {
+    list-style-type: none;
+}
+
+.informations ul li {
+    display: inline-block;
+    position: relative;
+    margin-right: 5px;
+}
+
+.informations li:not(:last-child):after {
+    content: '';
+    position: relative;
+    left: 5px;
+    top: -3px;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background-color: #bd1521;
+    font-size: 30px;
+    display: inline-block;
+}

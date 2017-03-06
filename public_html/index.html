@@ -1,16 +1,112 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
         <meta charset="UTF-8">
+        <title>La troupe imaginaire</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/w3.css"/>
+        <link rel="stylesheet" href="./css/styles.css"/>
+        <script src="https://use.fontawesome.com/ed61d7741c.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <header>
+            <nav class="w3-top">
+                <div class="w3-bar">
+                    <button class="w3-bar-item w3-button"><img src="./img/logo.png"/></button>
+                    <div class="w3-dropdown-click">
+                        <button class="w3-button" onclick="openDropdown(this)">Nos pièces&nbsp;<i class="fa fa-caret-down"></i></button>
+                        <div class="w3-dropdown-content w3-card-4">
+                            <a href="#" style="background-color: #000;">Montserrat</a>
+                            <a href="#" style="background-image: url(img/theatres/the-phantom-of-the-opera/cover.jpg);">The Phantom of the Opera</a>
+                            <a href="#" style="background-image: url(img/theatres/la-tragedie-du-roi-christophe/cover.jpg);">La Tragédie du roi Christophe</a>
+                            <a href="#" style="background-image: url(img/theatres/an-inspector-calls/cover.jpg);">An Inspector Calls</a>
+                            <a href="#" style="background-color: #000;">Toutes nos pièces</a>
+                        </div>
+                    </div>
+                    <button class="w3-bar-item w3-button">Découvrez nous</button>
+                    <button class="w3-bar-item w3-button">Contactez nous</button>
+                </div>
+            </nav>
+        </header>
+        <div class="content">
+            <div class="slideshow">
+                <div class="slide" style="background-image: url(img/theatres/the-phantom-of-the-opera/cover.jpg)">
+                    <div class="slide-content">
+                        <h2>The Phantom of the Opera</h2>
+                        <p class="w3-xlarge">Seen by over 100 million people worldwide, Cameron Mackintosh's THE PHANTOM OF THE OPERA is the highest grossing musical of all time.</p>
+                        <a class="w3-button w3-xlarge">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url(img/theatres/la-tragedie-du-roi-christophe/cover.jpg)">
+                    <div class="slide-content">
+                        <h2>La Tragédie du roi Christophe</h2>
+                        <p class="w3-xlarge">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <a class="w3-button w3-xlarge">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url(img/theatres/an-inspector-calls/cover.jpg)">
+                    <div class="slide-content">
+                        <h2>An Inspector Calls</h2>
+                        <p class="w3-xlarge">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <a class="w3-button w3-xlarge">En savoir plus</a>
+                    </div>
+                </div>
+                <button class="w3-button w3-display-left w3-xlarge" onclick="plusDivs(-1)"><i class="fa fa-chevron-left"></i></button>
+                <button class="w3-button w3-display-right w3-xlarge" onclick="plusDivs(1)"><i class="fa fa-chevron-right"></i></button>
+                <div class="w3-row indicators">
+                    <div class="w3-col s4">
+                        <div class="indicator w3-opacity w3-hover-opacity-off" style="background-image: url(img/theatres/the-phantom-of-the-opera/cover.jpg)" onclick="currentDiv(1)">
+                            <div class="indicator-content w3-xlarge">
+                                <div>
+                                    The Phantom of the Opera
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3-col s4">
+                        <div class="indicator w3-opacity w3-hover-opacity-off" style="background-image: url(img/theatres/la-tragedie-du-roi-christophe/cover.jpg)" onclick="currentDiv(2)">
+                            <div class="indicator-content w3-xlarge">
+                                <div>
+                                    La Tragédie du roi Christophe
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3-col s4">
+                        <div class="indicator w3-opacity w3-hover-opacity-off" style="background-image: url(img/theatres/an-inspector-calls/cover.jpg)" onclick="currentDiv(3)">
+                            <div class="indicator-content w3-xlarge">
+                                <div>
+                                    An Inspector Calls
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="w3-container">
+            <div class="w3-row-padding w3-section sitemap">
+                <div class="w3-col s6">
+                    <p>Nos pièces</p>
+                    <a href="#">Montserrat</a><br/>
+                    <a href="#">The Phantom of the Opera</a><br/>
+                    <a href="#">La Tragédie du roi Christophe</a><br/>
+                    <a href="#">An Inspector Calls</a><br/>
+                    <a href="#">Toutes nos pièces</a><br/>
+                </div>
+                <div class="w3-col s6">
+                    <a href="#">Découvrez nous</a><br/>
+                    <a href="#">Contactez nous</a>
+                </div>
+            </div>
+            <div class="informations w3-container">
+                <ul>
+                    <li>&copy;2017 La troupe imaginaire</li>
+                    <li>+33 6 00 00 00 00</li>
+                    <li>contact@la-troupe-imaginaire.com</li>
+                </ul>
+            </div>
+        </footer>
+        <script src="./js/main.js"></script>
     </body>
 </html>
