@@ -9,12 +9,47 @@
 
 html, body {
     width: 100%;
-    height: 100%;
+}
+
+body {
+    background-color: #000;
+}
+
+.text-theme {
+    color: #bd1521;
+}
+
+.w3-btn {
+    font-family: "adamCgPro", sans-serif;
+}
+
+.w3-btn.theme {
+    color: #fff;
+    background-color: #bd1521;
+}
+
+.w3-btn.theme-inverse {
+    color:#bd1521;
+    background-color: #fff;
+    border: 1px solid;
+}
+
+.w3-btn.theme-inverse:hover {
+    color: #fff;
+    background-color: #bd1521;
+}
+
+#nav {
+    font-family: "adamCgPro", sans-serif;
 }
 
 nav .w3-bar {
     height: 100px;
     transition: all .25s;
+}
+
+nav .w3-bar.black {
+    background-color: #000;
 }
 
 nav .w3-bar:hover {
@@ -46,10 +81,6 @@ nav img {
     height: 100%;
 }
 
-nav i.fa {
-    color: #bd1521;
-}
-
 .w3-dropdown-content a {
     background-color: rgba(0,0,0,0.5);
     background-position: center;
@@ -66,28 +97,71 @@ nav i.fa {
     filter: grayscale(0%);
 }
 
-.content {
-    height: 100%;
+#loader {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    margin-top: 100px;
+    background-color: #bd1521;
+    overflow: hidden;
+    z-index: 9;
+    transition: all .4s ease-in-out;
+}
+
+#loader > div {
+    margin: auto;
+    font-size: 72px;
+}
+
+#loader > div > div {
+    display: inline-block;
+    animation-name: dot;
+    animation-duration: 1.4s;
+    animation-timing-function: cubic-bezier(0, 1.5, 0, 1.5);
+    animation-iteration-count: infinite;
+}
+
+#loader > div > div:nth-child(2) {
+    animation-delay: .2s;
+}
+
+#loader > div > div:last-child {
+    animation-delay: .4s;
+}
+
+@keyframes dot {
+    0% {
+        transform: translateY(0)
+    }
+    25% {
+        transform: translateY(10px)
+    }
+    75% {
+        transform: translateY(10px)
+    }
+    100% {
+        transform: translateY(0%)
+    }
+}
+
+#content {
+    background-color: #0b0020;
+    transition: filter .8s ease-in-out;
+}
+
+.animate-opacity {
+    -webkit-animation: opac 0.4s both;
+    animation: opac 0.4s both;
 }
 
 .slideshow {
-    height: 100%;
+    min-height: 100vh;
     background-color: #000;
 }
 
-.slideshow > button {
-    color: #bd1521;
-    border: 1px solid;
-    transition: all .25s;
-}
-
-.slideshow > button:hover {
-    color: #fff!important;
-    background-color: #bd1521!important;
-}
-
 .slide {
-    height: 80%;
+    height: 80vh;
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -102,7 +176,7 @@ nav i.fa {
     }
 
     100% {
-        opacity: 100%;
+        opacity: 100;
     }
 }
 
@@ -147,20 +221,8 @@ nav i.fa {
     text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
-.slide-content a {
-    font-style: italic;
-    color: #bd1521;
-    border: 1px solid;
-    transition: all .25s;
-}
-
-.slide-content a:hover {
-    background-color: #bd1521!important;
-    color: #fff!important;
-}
-
 .indicators {
-    height: 20%;
+    height: 20vh;
     background-color: #bd1521;
 
 }
@@ -200,6 +262,8 @@ nav i.fa {
 footer {
     color: #fff;
     background-color: #000;
+    padding: 0 16px;
+    padding-top: 100px;
 }
 
 .sitemap {
@@ -251,4 +315,68 @@ footer {
     background-color: #bd1521;
     font-size: 30px;
     display: inline-block;
+}
+
+video {
+    background-color: #000;
+    width: 100%;
+    height: 100vh;
+}
+
+.theatre {
+    color: #fff;
+}
+
+.theatre .w3-bar .breadcrumb {
+    display: inline-block;
+    padding: 6px 16px;
+}
+
+.theatre .w3-bar .breadcrumb a {
+    text-decoration: none;
+}
+
+.theatre .w3-bar .breadcrumb a:hover {
+    color: #bd1521;
+}
+
+.theatre .w3-bar .breadcrumb span {
+    margin-left: 12px;
+}
+
+.synopsis {
+    opacity: 0;
+}
+
+.radio-spot {
+    text-align: center;
+}
+
+.radio-spot audio {
+    width: 25%;
+    margin: auto;
+}
+
+.contact {
+    color: #fff;
+    padding-top: 100px;
+}
+
+.contact img {
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+.contact .heading {
+    text-align: center;
+    font-size: 18px;
+}
+
+.contact form label {
+    color: #bd1521;
+}
+
+.contact form textarea {
+    height: 150px;
 }
