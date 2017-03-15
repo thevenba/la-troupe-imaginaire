@@ -24,13 +24,18 @@ function hasParamURL() {
 
 hasParamURL();
 
+/*
+ * La fonction qui ajoute la fonction loadPage à l'evenement click sur tous les liens ajaxLink
+ */
+function addLoadPage() {
 // On ajoute la fonction loadPage à l'evenement click sur tous les liens ajaxLink
-var ajaxLinks = document.getElementsByClassName("ajaxLink");
-for (var indexAjaxLinks = 0; indexAjaxLinks < ajaxLinks.length; indexAjaxLinks++) {
-    ajaxLinks[indexAjaxLinks].onclick = function () {
-        document.getElementById("loader").style.height = "100vh";
-        document.getElementById("content").style.filter = "brightness(0)";
-        loadPage(this.getAttribute("data-target"));
+    var ajaxLinks = document.getElementsByClassName("ajaxLink");
+    for (var indexAjaxLinks = 0; indexAjaxLinks < ajaxLinks.length; indexAjaxLinks++) {
+        ajaxLinks[indexAjaxLinks].onclick = function () {
+            document.getElementById("loader").style.height = "100vh";
+            document.getElementById("content").style.filter = "brightness(0)";
+            loadPage(this.getAttribute("data-target"));
+        }
     }
 }
 
@@ -44,10 +49,14 @@ function loadPage(id) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+                document.body.scrollTop = 0;
                 var content = document.getElementById("content");
                 content.innerHTML = this.responseText;
                 document.getElementById("loader").style.height = "0";
                 content.style.filter = "brightness(100%)";
+                addLoadPage();
+                toggleSlideShow();
+//                scrollTheatres();
             } else if (this.readyState = 4 && this.status == 404) {
                 var content = document.getElementById("content");
                 content.innerHTML = "Il semble que la page demandée n\'existe pas, contactez l'administrateur du site si le problème persiste.";
@@ -66,6 +75,75 @@ function loadPage(id) {
 /***** END: NAVIGATATION FUNCTION *****/
 
 /***** BEGIN: SCROLL FUNCTIONS *****/
+
+/***** BEGIN: THEATRES *****/
+//var currentScrollTop = document.body.scrollTop;
+//var theatres;
+//var offsetTopTheatresList = new Array();
+//var isEndOfPage = false;
+//
+//function scrollTheatres() {
+//    if (document.getElementById("theatres")) {
+//        theatres = document.getElementById("theatres").children;
+//        for (var indexTheatresList = 0; indexTheatresList < theatres.length; indexTheatresList++) {
+//            offsetTopTheatresList[indexTheatresList] = theatres[indexTheatresList].offsetTop;
+//        }
+//        offsetTopTheatresList[offsetTopTheatresList.length] = document.getElementById("footer").offsetTop;
+//        var scrollTop = document.body.scrollTop;
+//        var indexCurrentTheatre = offsetTopTheatresList.indexOf(currentScrollTop);
+//        console.log(currentScrollTop);
+//        console.log(scrollTop);
+//        // Si on scroll down...
+//        if (scrollTop > currentScrollTop) {
+//            window.removeEventListener("scroll", scrollTheatres);
+//            // Si on est en bas de page...
+//            if (isEndOfPage) {
+//            } else {
+//                theatres[indexCurrentTheatre].className = "animate-bottom";
+//                scrollTo(0, offsetTopTheatresList[indexCurrentTheatre + 1]);
+//                theatres[indexCurrentTheatre + 1].className = "animate-top";
+//                setTimeout(function () {
+//                    theatres[indexCurrentTheatre].className = "";
+//                    theatres[indexCurrentTheatre + 1].className = "";
+//                }, 400);
+//
+//            }
+//            setTimeout(function () {
+//                window.addEventListener("scroll", scrollTheatres);
+//            }, 400);
+//        } else if (scrollTop < currentScrollTop) {
+//            window.removeEventListener("scroll", scrollTheatres);
+//            // Si on est en bas de page...
+//            if (isEndOfPage) {
+//                scrollTo(0, offsetTopTheatresList[offsetTopTheatresList.length - 2]);
+//            } else {
+//                theatres[indexCurrentTheatre].className = "animate-top";
+//                scrollTo(0, offsetTopTheatresList[indexCurrentTheatre - 1]);
+//                theatres[indexCurrentTheatre - 1].className = "animate-bottom";
+//                setTimeout(function () {
+//                    theatres[indexCurrentTheatre].className = "";
+//                    theatres[indexCurrentTheatre - 1].className = "";
+//                }, 400);
+//            }
+//            setTimeout(function () {
+//                window.addEventListener("scroll", scrollTheatres);
+//            }, 400);
+//        } else {
+//            window.addEventListener("scroll", scrollTheatres);
+//        }
+//        currentScrollTop = document.body.scrollTop;
+//        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+//            isEndOfPage = true;
+//        } else {
+//            isEndOfPage = false;
+//        }
+//        offsetTopTheatresList = new Array();
+//    } else {
+//        return;
+//    }
+//}
+/**** END: THEATRES *****/
+
 // Au scroll de la fenetre...
 window.onscroll = function () {
     // le menu de navigation
@@ -77,14 +155,33 @@ window.onscroll = function () {
         nav.className = "w3-bar";
     }
 
-    var synopsis = document.getElementsByClassName("synopsis")[0];
-    if (synopsis) {
+    var theatre = document.getElementById("theatre");
+    if (theatre) {
+        var screen = theatre.offsetTop;
+        var synopsis = document.getElementsByClassName("synopsis")[0];
+        var top = document.getElementsByClassName("top")[0];
+        var middle = document.getElementsByClassName("middle")[0];
+        var bottom = document.getElementsByClassName("bottom")[0];
+        var theatreFooter = document.getElementsByClassName("theatre-footer")[0];
         // Si le scroll est au dela de 700...
-        if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-            synopsis.className = "synopsis animate-opacity";
+        if (document.body.scrollTop > synopsis.offsetTop - screen || document.documentElement.scrollTop > synopsis.offsetTop - screen) {
+            synopsis.className = "synopsis w3-row-padding animate-bottom";
+        }
+        if (document.body.scrollTop > top.offsetTop - screen || document.documentElement.scrollTop > top.offsetTop - screen) {
+            top.className = "top animate-bottom";
+        }
+        if (document.body.scrollTop > middle.offsetTop - screen || document.documentElement.scrollTop > middle.offsetTop - screen) {
+            middle.className = "middle animate-bottom";
+        }
+        if (document.body.scrollTop > bottom.offsetTop - screen || document.documentElement.scrollTop > bottom.offsetTop - screen) {
+            bottom.className = "bottom animate-bottom";
+        }
+        if (document.body.scrollTop > theatreFooter.offsetTop - screen || document.documentElement.scrollTop > theatreFooter.offsetTop - screen) {
+            theatreFooter.className = "theatre-footer animate-bottom";
         }
     }
 };
+
 /***** END: SCROLL FUNCTIONS *****/
 
 /***** BEGIN: NAVBAR FUNCTION *****/
@@ -117,7 +214,13 @@ function openDropdown(buttonDropdown) {
 
 /***** BEGIN: SLIDESHOW FUNCTIONS *****/
 var slideIndex = 1;
-showDivs(slideIndex);
+function toggleSlideShow() {
+    if (document.getElementById("slideshow")) {
+        showDivs(slideIndex);
+    } else {
+        return;
+    }
+}
 
 /*
  * La fonction qui avance le slideshow de n slide
@@ -161,3 +264,21 @@ function showDivs(n) {
     dots[slideIndex - 1].className += " w3-opacity-off";
 }
 /***** END: SLIDESHOW FUNCTIONS *****/
+
+function displayLabel(input) {
+    var labels = document.getElementsByClassName("w3-label");
+    for (var indexLabels = 0; indexLabels < labels.length; indexLabels++) {
+        labels[indexLabels].className = labels[indexLabels].className.replace("visible", "");
+    }
+    var label = input.previousElementSibling;
+    if (label.className != "w3-label visible") {
+        input.previousElementSibling.className += " visible";
+    }
+
+    window.onclick = function (event) {
+        if (event.target != input) {
+            console.log("replace");
+            label.className = label.className.replace(" visible", "");
+        }
+    }
+}

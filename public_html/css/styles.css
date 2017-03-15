@@ -4,7 +4,31 @@
 */
 @font-face {
     font-family: adamCgPro;
-    src: url(../adamcg_pro.otf)
+    src: url(../fonts/adamcg_pro.otf);
+}
+
+@font-face {
+    font-family: Crimson Text;
+    src: url(../fonts/CrimsonText-Roman.ttf);
+}
+
+@font-face {
+    font-family: Crimson Text;
+    src: url(../fonts/CrimsonText-Bold.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Crimson Text;
+    src: url(../fonts/CrimsonText-Italic.ttf);
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Crimson Text;
+    src: url(../fonts/CrimsonText-BoldItalic.ttf);
+    font-weight: bold;
+    font-style: italic;
 }
 
 html, body {
@@ -13,14 +37,64 @@ html, body {
 
 body {
     background-color: #000;
+    font-family: "Crimson Text", serif;
+    letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5 {
+    letter-spacing: initial;
+}
+
+.w3-row-padding {
+    padding: 0px;
+}
+
+.w3-row-padding > .w3-col {
+    padding: 0 8px;
+}
+
+.w3-row-padding > .w3-col:first-child {
+    padding-left: 0;
+}
+
+.w3-row-padding > .w3-col:last-child {
+    padding-right: 0;
+}
+
+.adam {
+    font-family: "adamCgPro", sans-serif;
+    letter-spacing: initial;
 }
 
 .text-theme {
     color: #bd1521;
 }
 
+.w100 {
+    width: 100%;
+    height: auto;
+}
+
+.section {
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+
+.quote span {
+    font-size: 150px;
+    line-height: 0.6em;
+}
+
+.quote p {
+    font-style: italic;
+    font-size: 24px;
+    margin-top: -50px;
+    text-indent: 100px;
+}
+
 .w3-btn {
     font-family: "adamCgPro", sans-serif;
+    letter-spacing: initial;
 }
 
 .w3-btn.theme {
@@ -37,6 +111,23 @@ body {
 .w3-btn.theme-inverse:hover {
     color: #fff;
     background-color: #bd1521;
+}
+
+.w3-label {
+    font-family: "adamCgPro", sans-serif;
+    letter-spacing: initial;
+}
+
+.animate-bottom {
+    position: relative;
+    -webkit-animation: animatebottom 0.4s both;
+    animation: animatebottom 0.4s both;
+}
+
+.animate-top {
+    position: relative;
+    -webkit-animation: animatebottom 0.4s both;
+    animation: animatebottom 0.4s both;
 }
 
 #nav {
@@ -101,7 +192,7 @@ nav img {
     display: flex;
     position: absolute;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 100px);
     margin-top: 100px;
     background-color: #bd1521;
     overflow: hidden;
@@ -323,29 +414,70 @@ video {
     height: 100vh;
 }
 
-.theatre {
+#theatre {
     color: #fff;
 }
 
-.theatre .w3-bar .breadcrumb {
+#theatre .w3-bar .breadcrumb {
     display: inline-block;
     padding: 6px 16px;
 }
 
-.theatre .w3-bar .breadcrumb a {
+#theatre .w3-bar .breadcrumb a {
     text-decoration: none;
+    font-size: 40px;
 }
 
-.theatre .w3-bar .breadcrumb a:hover {
+#theatre .w3-bar .breadcrumb a:hover {
     color: #bd1521;
 }
 
-.theatre .w3-bar .breadcrumb span {
+#theatre .w3-bar .breadcrumb h2 {
+    display: inline;
     margin-left: 12px;
 }
 
 .synopsis {
     opacity: 0;
+    width: 75%;
+    margin: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.synopsis div:last-child {
+    padding-left: 48px;
+}
+
+#theatre .description p {
+    padding-left: 48px;
+    padding-right: 48px;
+}
+
+#theatre .description .top, #theatre .description .middle, #theatre .description .bottom {
+    opacity: 0;
+}
+
+#theatre .description .top img, #theatre .description .bottom img {
+    width: 100%;
+}
+
+#theatre .description .middle img {
+    display: block;
+    position: relative;
+    width: 60%;
+    margin-left: auto;
+    top: -100px;
+    z-index: -1;
+}
+
+#theatre .description .bottom > div {
+    position: relative;
+    top: -200px;
+}
+
+#theatre .description .bottom > div .w3-col:last-child {
+    padding-top: 200px;
 }
 
 .radio-spot {
@@ -360,6 +492,7 @@ video {
 .contact {
     color: #fff;
     padding-top: 100px;
+    padding-bottom: 12px;
 }
 
 .contact img {
@@ -373,10 +506,43 @@ video {
     font-size: 18px;
 }
 
-.contact form label {
+.contact form {
+    width: 75%;
+    margin: auto;
+}
+
+.contact form .w3-label {
     color: #bd1521;
+    opacity: 0;
+    transition: all .25s;
+}
+
+.contact form .w3-label.visible {
+    opacity: 1;
+}
+
+.contact .w3-input {
+    border: 1px solid transparent;
+    border-bottom-color: #808080;
+    background-color: transparent;
+    color: #fff;
+}
+
+.contact .w3-input:focus {
+    outline: none;
+    border-color: #808080;
 }
 
 .contact form textarea {
     height: 150px;
+}
+
+.contact .w3-btn {
+    padding: 12px 24px;
+}
+
+.legal-notices {
+    padding-top: 100px;
+    color: #fff;
+    text-align: center;
 }

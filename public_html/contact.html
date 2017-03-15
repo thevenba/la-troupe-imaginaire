@@ -5,26 +5,33 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
     <form class="w3-container w3-animate-bottom">
-        <div class="w3-row-padding">
-            <div class="w3-col s12 m6">
+        <div class="w3-row">
+            <div class="w3-col s12 m6" style="padding-right: 8px;">
                 <label class="w3-label">Nom*</label>
-                <input class="w3-input" type="text" name="name"/>
+                <input class="w3-input" type="text" name="name" placeholder="Votre nom" onclick="displayLabel(this)"/>
             </div>
-            <div class="w3-col s12 m6">
+            <div class="w3-col s12 m6" style="padding-left: 8px;">
                 <label class="w3-label">Email*</label>
-                <input class="w3-input" type="email" name="email"/>
+                <input class="w3-input" type="email" name="email" placeholder="Votre email" onclick="displayLabel(this)"/>
             </div>
         </div>
         <p>
             <label class="w3-label">Sujet*</label>
-            <input class="w3-input" type="text" name="subject"/>
+            <input class="w3-input" type="text" name="subject" placeholder="Votre sujet" onclick="displayLabel(this)"/>
         </p>
         <p>
             <label class="w3-label">Message*</label>
-            <textarea class="w3-input" name="message"></textarea>
+            <textarea class="w3-input" name="message" placeholder="Votre message" onclick="displayLabel(this)"></textarea>
         </p>
         <p>
             <input type="submit" class="w3-btn theme" name="send" value="Envoyer"/>
         </p>
     </form>
+    <p class="w3-center">
+        <span class="w3-xlarge">La troupe imaginaire</span><br/>
+        26 rue Desaix<br/>
+        68100 Mulhouse<br/>
+        +33 (0)6 00 00 00 00<br/>
+        contact[at]la-troupe-imaginaire[dot]com
+    </p>
 </div>
