@@ -142,6 +142,48 @@ function loadPage(id) {
 //        return;
 //    }
 //}
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+function scrollTo(Y) {
+    document.getElementById("content").style.opacity = "0";
+
+    var start = Date.now(),
+            elem = document.documentElement.scrollTop ? document.documentElement : document.body,
+            from = elem.scrollTop;
+
+    if (from === Y) {
+        document.getElementById("content").style.opacity = 1;
+        return;
+    }
+
+    function min(a, b) {
+        return a < b ? a : b;
+    }
+
+    function scroll(timestamp) {
+
+        var currentTime = Date.now(),
+                time = min(1, ((currentTime - start) / 800)),
+                easedT = easeInOutCubic(time);
+
+        elem.scrollTop = (easedT * (Y - from)) + from;
+
+        if (time < 1)
+            requestAnimationFrame(scroll);
+        else
+            document.getElementById("content").style.opacity = 1;
+            return;
+    }
+
+    requestAnimationFrame(scroll)
+}
+
+function easeInOutCubic(t) {
+    return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+}
+
+
 /**** END: THEATRES *****/
 
 // Au scroll de la fenetre...
@@ -189,12 +231,11 @@ window.onscroll = function () {
  * La fonction qui ouvre la bare de navigation
  */
 function openNav() {
-    var x = document.getElementById("demo");
-    console.log(x);
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
+    var mobileBar = document.getElementById("mobileBar");
+    if (mobileBar.className.indexOf("w3-show") == -1) {
+        mobileBar.className += " w3-show";
     } else {
-        x.className = x.className.replace(" w3-show", "");
+        mobileBar.className = mobileBar.className.replace(" w3-show", "");
     }
 }
 

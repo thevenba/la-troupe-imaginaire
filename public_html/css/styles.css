@@ -179,7 +179,7 @@ nav img {
     background-size: cover;
     color: #fff;
     padding: 12px 32px;
-    filter: grayscale(50%);
+    filter: grayscale(100%);
     text-shadow: 0 2px 4px rgba(0,0,0,0.8);
     transition: all .25s;
 }
@@ -207,6 +207,10 @@ nav img {
 
 #loader > div > div {
     display: inline-block;
+    -webkit-animation-name: dot;
+    -webkit-animation-duration: 1.4s;
+    -webkit-animation-timing-function: cubic-bezier(0, 1.5, 0, 1.5);
+    -webkit-animation-iteration-count: infinite;
     animation-name: dot;
     animation-duration: 1.4s;
     animation-timing-function: cubic-bezier(0, 1.5, 0, 1.5);
@@ -214,11 +218,28 @@ nav img {
 }
 
 #loader > div > div:nth-child(2) {
+    -webkit-animation-delay: .2s;
     animation-delay: .2s;
 }
 
 #loader > div > div:last-child {
+    -webkit-animation-delay: .4s;
     animation-delay: .4s;
+}
+
+@-webkit-keyframes dot {
+    0% {
+        transform: translateY(0)
+    }
+    25% {
+        transform: translateY(10px)
+    }
+    75% {
+        transform: translateY(10px)
+    }
+    100% {
+        transform: translateY(0%)
+    }
 }
 
 @keyframes dot {
@@ -238,7 +259,7 @@ nav img {
 
 #content {
     background-color: #0b0020;
-    transition: filter .8s ease-in-out;
+    transition: filter .8s ease-in-out, opacity .25s ease-in-out;
 }
 
 .animate-opacity {
@@ -261,6 +282,16 @@ nav img {
     animation: opac 0.8s;
 }
 
+@-webkit-keyframes opac {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 100;
+    }
+}
+
 @keyframes opac {
     0% {
         opacity: 0;
@@ -281,18 +312,30 @@ nav img {
 }
 
 .slide-content h2 {
-    -webkit-animation: translate 0.4s;
+    -webkit-animation: translate 0.4s both;
     animation: translate 0.4s both;
 }
 
 .slide-content p {
-    -webkit-animation: translate 0.4s;
+    -webkit-animation: translate 0.4s 0.2s both;
     animation: translate 0.4s 0.2s both;
 }
 
 .slide-content a {
-    -webkit-animation: translate 0.4s;
+    -webkit-animation: translate 0.4s 0.4s both;
     animation: translate 0.4s 0.4s both;
+}
+
+@-webkit-keyframes translate {
+    0% {
+        opacity: 0;
+        transform: translateX(-10%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
 }
 
 @keyframes translate {
@@ -406,6 +449,49 @@ footer {
     background-color: #bd1521;
     font-size: 30px;
     display: inline-block;
+}
+
+#theatresNav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -400px;
+    background-color: #000;
+    color: #fff;
+    font-family: "adamCgPro", sans-serif;
+    transition: all .25s;
+}
+
+#theatresNav:hover {
+    right: 0;
+}
+
+#theatresNav > div {
+    padding: 6px 8px;
+    cursor: pointer;
+    transition: all .25s;
+}
+
+#theatresNav > div:not(:last-child) {
+    border-bottom: 1px solid #bd1521;
+}
+
+#theatresNav > div:hover {
+    background-color: #bd1521;
+}
+
+#theatresNav .year:after {
+    content: '';
+    position: relative;
+    left: 5px;
+    top: -3px;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background-color: #bd1521;
+    font-size: 30px;
+    display: inline-block;
+    margin-right: 10px;
 }
 
 video {
