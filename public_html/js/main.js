@@ -59,9 +59,10 @@ function loadPage(id) {
 //                scrollTheatres();
             } else if (this.readyState = 4 && this.status == 404) {
                 var content = document.getElementById("content");
-                content.innerHTML = "Il semble que la page demandée n\'existe pas, contactez l'administrateur du site si le problème persiste.";
+                content.innerHTML = '<div style="padding: 128px; width: 50%; margin: auto; text-align: enter">Il semble que la page demandée n\'existe pas, contactez l\'administrateur du site si le problème persiste.</div>';
                 content.style.filter = "brightness(100%)";
                 document.getElementById("loader").style.height = "0";
+                addLoadPage();
             }
         };
         xhttp.open("GET", "./" + id + ".html", true);
@@ -99,61 +100,57 @@ function loadPage(id) {
 //            // Si on est en bas de page...
 //            if (isEndOfPage) {
 //            } else {
-//                theatres[indexCurrentTheatre].className = "animate-bottom";
-//                scrollTo(0, offsetTopTheatresList[indexCurrentTheatre + 1]);
-//                theatres[indexCurrentTheatre + 1].className = "animate-top";
-//                setTimeout(function () {
-//                    theatres[indexCurrentTheatre].className = "";
-//                    theatres[indexCurrentTheatre + 1].className = "";
-//                }, 400);
-//
+//                scrollTo(offsetTopTheatresList[indexCurrentTheatre + 1]);
+//                currentScrollTop = offsetTopTheatresList[indexCurrentTheatre + 1];
 //            }
 //            setTimeout(function () {
 //                window.addEventListener("scroll", scrollTheatres);
-//            }, 400);
+//            }, 900);
 //        } else if (scrollTop < currentScrollTop) {
 //            window.removeEventListener("scroll", scrollTheatres);
 //            // Si on est en bas de page...
 //            if (isEndOfPage) {
 //                scrollTo(0, offsetTopTheatresList[offsetTopTheatresList.length - 2]);
 //            } else {
-//                theatres[indexCurrentTheatre].className = "animate-top";
-//                scrollTo(0, offsetTopTheatresList[indexCurrentTheatre - 1]);
-//                theatres[indexCurrentTheatre - 1].className = "animate-bottom";
-//                setTimeout(function () {
-//                    theatres[indexCurrentTheatre].className = "";
-//                    theatres[indexCurrentTheatre - 1].className = "";
-//                }, 400);
+//                scrollTo(offsetTopTheatresList[indexCurrentTheatre - 1]);
+//                currentScrollTop = offsetTopTheatresList[indexCurrentTheatre - 1];
 //            }
 //            setTimeout(function () {
 //                window.addEventListener("scroll", scrollTheatres);
-//            }, 400);
+//            }, 900);
 //        } else {
 //            window.addEventListener("scroll", scrollTheatres);
 //        }
-//        currentScrollTop = document.body.scrollTop;
+//        
 //        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
 //            isEndOfPage = true;
 //        } else {
 //            isEndOfPage = false;
 //        }
+//        console.log(currentScrollTop);
 //        offsetTopTheatresList = new Array();
+//        
 //    } else {
 //        return;
 //    }
 //}
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
 function scrollTo(Y) {
-    document.getElementById("content").style.opacity = "0";
+    var theatresLi = document.getElementsByClassName("theatre-li");
+    for (var indexTheatresLi = 0; indexTheatresLi < theatresLi.length; indexTheatresLi++) {
+        theatresLi[indexTheatresLi].style.opacity = "0";
+    }
 
     var start = Date.now(),
             elem = document.documentElement.scrollTop ? document.documentElement : document.body,
             from = elem.scrollTop;
 
     if (from === Y) {
-        document.getElementById("content").style.opacity = 1;
+        for (var indexTheatresLi = 0; indexTheatresLi < theatresLi.length; indexTheatresLi++) {
+            theatresLi[indexTheatresLi].style.opacity = "1";
+        }
         return;
     }
 
@@ -171,9 +168,12 @@ function scrollTo(Y) {
 
         if (time < 1)
             requestAnimationFrame(scroll);
-        else
-            document.getElementById("content").style.opacity = 1;
+        else {
+            for (var indexTheatresLi = 0; indexTheatresLi < theatresLi.length; indexTheatresLi++) {
+                theatresLi[indexTheatresLi].style.opacity = "1";
+            }
             return;
+        }
     }
 
     requestAnimationFrame(scroll)
@@ -201,13 +201,20 @@ window.onscroll = function () {
     if (theatre) {
         var screen = theatre.offsetTop;
         var synopsis = document.getElementsByClassName("synopsis")[0];
+        var characters = document.getElementsByClassName("characters")[0];
+        var bigQuote = document.getElementsByClassName("bigQuote")[0];
         var top = document.getElementsByClassName("top")[0];
         var middle = document.getElementsByClassName("middle")[0];
         var bottom = document.getElementsByClassName("bottom")[0];
         var theatreFooter = document.getElementsByClassName("theatre-footer")[0];
-        // Si le scroll est au dela de 700...
         if (document.body.scrollTop > synopsis.offsetTop - screen || document.documentElement.scrollTop > synopsis.offsetTop - screen) {
             synopsis.className = "synopsis w3-row-padding animate-bottom";
+        }
+        if (document.body.scrollTop > characters.offsetTop - screen || document.documentElement.scrollTop > characters.offsetTop - screen) {
+            characters.className = "characters animate-bottom";
+        }
+        if (document.body.scrollTop > bigQuote.offsetTop - screen || document.documentElement.scrollTop > bigQuote.offsetTop - screen) {
+            bigQuote.className = "bigQuote animate-bottom";
         }
         if (document.body.scrollTop > top.offsetTop - screen || document.documentElement.scrollTop > top.offsetTop - screen) {
             top.className = "top animate-bottom";
@@ -220,6 +227,21 @@ window.onscroll = function () {
         }
         if (document.body.scrollTop > theatreFooter.offsetTop - screen || document.documentElement.scrollTop > theatreFooter.offsetTop - screen) {
             theatreFooter.className = "theatre-footer animate-bottom";
+        }
+    }
+
+    var about = document.getElementById("about");
+    if (about) {
+        var aboutContents = document.getElementsByClassName("about-content");
+        for (var indexAboutContents = 0; indexAboutContents < aboutContents.length; indexAboutContents++) {
+            var els = aboutContents[indexAboutContents].children;
+            for (var indexEls = 0; indexEls < els.length; indexEls++) {
+                if (document.body.scrollTop > els[indexEls].offsetTop - aboutContents[indexAboutContents].offsetTop / 2 || document.documentElement.scrollTop > aboutContents[indexAboutContents].offsetTop / 2) {
+                    if (!els[indexEls].className.match(/animate-bottom/)) {
+                        els[indexEls].className += " animate-bottom";
+                    }
+                }
+            }
         }
     }
 };
@@ -297,14 +319,35 @@ function showDivs(n) {
         slide[i].style.display = "none";
         slide[i].firstElementChild.style.dislay = "none";
     }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+    if (dots.length !== 0) {
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+        }
+        dots[slideIndex - 1].className += " w3-opacity-off";
     }
     slide[slideIndex - 1].style.display = "block";
     slide[slideIndex - 1].firstElementChild.style.dislay = "block";
-    dots[slideIndex - 1].className += " w3-opacity-off";
 }
 /***** END: SLIDESHOW FUNCTIONS *****/
+
+/**** BEGIN: TAB FUNCTIONS ****/
+function openTabbed(tablink, aboutContent) {
+    var aboutContents = document.getElementsByClassName("about-content");
+    for (var indexAboutContent = 0; indexAboutContent < aboutContents.length; indexAboutContent++) {
+        aboutContents[indexAboutContent].style.display = "none";
+    }
+    var tablinks = document.getElementsByClassName("tablink");
+    for (var indexTablinks = 0; indexTablinks < tablinks.length; indexTablinks++) {
+        tablinks[indexTablinks].className = tablinks[indexTablinks].className.replace(" active", "");
+    }
+    document.getElementById(aboutContent).style.display = "block";
+    tablink.firstElementChild.className += " active";
+    scrollTo(document.getElementsByClassName("tablinks")[0].offsetTop - 100);
+}
+/**** END: TAB FUNCTIONS *****/
+
+
+
 
 function displayLabel(input) {
     var labels = document.getElementsByClassName("w3-label");

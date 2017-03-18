@@ -45,6 +45,10 @@ h1, h2, h3, h4, h5 {
     letter-spacing: initial;
 }
 
+.large {
+    font-size: 24px;
+}
+
 .w3-row-padding {
     padding: 0px;
 }
@@ -59,6 +63,10 @@ h1, h2, h3, h4, h5 {
 
 .w3-row-padding > .w3-col:last-child {
     padding-right: 0;
+}
+
+.shadow {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.6);
 }
 
 .adam {
@@ -78,6 +86,13 @@ h1, h2, h3, h4, h5 {
 .section {
     padding-bottom: 12px;
     padding-top: 12px;
+}
+
+.hero-image {
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .quote span {
@@ -113,6 +128,10 @@ h1, h2, h3, h4, h5 {
     background-color: #bd1521;
 }
 
+.w3-btn.theme-gold:hover {
+    background-color: #c59411;
+}
+
 .w3-label {
     font-family: "adamCgPro", sans-serif;
     letter-spacing: initial;
@@ -136,6 +155,7 @@ h1, h2, h3, h4, h5 {
 
 nav .w3-bar {
     height: 100px;
+    -webkit-transition: all .25s;
     transition: all .25s;
 }
 
@@ -159,6 +179,7 @@ nav .w3-button {
     text-transform: uppercase;
     letter-spacing: 4px;
     color: #fff!important;
+    -webkit-transition: color .25s, background-color 0s;
     transition: color .25s, background-color 0s;
     background-color: transparent!important;
 }
@@ -179,24 +200,30 @@ nav img {
     background-size: cover;
     color: #fff;
     padding: 12px 32px;
+    -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
     text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    -webkit-transition: all .25s;
     transition: all .25s;
 }
 
 .w3-dropdown-content a:hover {
+    -webkit-filter: grayscale(0%);
     filter: grayscale(0%);
 }
 
 #loader {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: calc(100vh - 100px);
     margin-top: 100px;
     background-color: #bd1521;
     overflow: hidden;
     z-index: 9;
+    -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
 
@@ -229,37 +256,53 @@ nav img {
 
 @-webkit-keyframes dot {
     0% {
+        -webkit-transform: translateY(0);
         transform: translateY(0)
     }
     25% {
+        -webkit-transform: translateY(10px);
         transform: translateY(10px)
     }
     75% {
+        -webkit-transform: translateY(10px);
         transform: translateY(10px)
     }
     100% {
+        -webkit-transform: translateY(0%);
         transform: translateY(0%)
     }
 }
 
 @keyframes dot {
     0% {
+        -webkit-transform: translateY(0);
         transform: translateY(0)
     }
     25% {
+        -webkit-transform: translateY(10px);
         transform: translateY(10px)
     }
     75% {
+        -webkit-transform: translateY(10px);
         transform: translateY(10px)
     }
     100% {
+        -webkit-transform: translateY(0%);
         transform: translateY(0%)
     }
 }
 
 #content {
+    color: #fff;
     background-color: #0b0020;
-    transition: filter .8s ease-in-out, opacity .25s ease-in-out;
+    -webkit-transition: -webkit-filter .8s ease-in-out;
+    transition: -webkit-filter .8s ease-in-out;
+    transition: filter .8s ease-in-out;
+    transition: filter .8s ease-in-out, -webkit-filter .8s ease-in-out;
+}
+
+#theatre, #theatres, #about, #contact, #legal-notices {
+    padding-bottom: 128px
 }
 
 .animate-opacity {
@@ -267,12 +310,92 @@ nav img {
     animation: opac 0.4s both;
 }
 
-.slideshow {
+#footer {
+    color: #fff;
+    background-color: #000;
+    padding: 0 16px;
+    padding-top: 100px;
+}
+
+#footer .sitemap {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #bd1521;
+}
+
+#footer .sitemap p {
+    color: #bd1521;
+    text-transform: uppercase;
+}
+
+#footer .sitemap a {
+    text-decoration: none;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+}
+
+#footer .sitemap a:hover {
+    text-decoration: underline;
+    color: #bd1521;
+}
+
+.social-media {
+    width: 50%;
+    margin: auto;
+}
+
+.social-media a {
+    display: block;
+    padding: 8px;
+}
+
+.social-media a img {
+    width: 100%;
+    filter: grayscale(1);
+    transition: all .25s;
+}
+
+.social-media a:hover img {
+    filter: grayscale(0);
+}
+
+
+#footer .informations {
+    text-align: center;
+}
+
+#footer .informations ul {
+    list-style-type: none;
+}
+
+#footer .informations ul li {
+    display: inline-block;
+    position: relative;
+    margin-right: 5px;
+}
+
+#footer .informations li:not(:last-child):after {
+    content: '';
+    position: relative;
+    left: 5px;
+    top: -3px;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background-color: #bd1521;
+    font-size: 30px;
+    display: inline-block;
+}
+
+/**** BEGIN : HOME PAGE *****/
+#homepage #slideshow {
     min-height: 100vh;
     background-color: #000;
 }
 
-.slide {
+#homepage #slideshow .slide {
     height: 80vh;
     width: 100%;
     background-position: center;
@@ -302,26 +425,27 @@ nav img {
     }
 }
 
-.slide-content {
-    position: absolute;
+#homepage #slideshow .slide .slide-content {
+    position: relative;
     top: 30%;
     left: 15%;
     width: 50%;
     color: #fff;
-
 }
 
-.slide-content h2 {
+#homepage #slideshow .slide .slide-content h2 {
     -webkit-animation: translate 0.4s both;
     animation: translate 0.4s both;
 }
 
-.slide-content p {
+#homepage #slideshow .slide .slide-content p {
+    font-style: italic;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
     -webkit-animation: translate 0.4s 0.2s both;
     animation: translate 0.4s 0.2s both;
 }
 
-.slide-content a {
+#homepage #slideshow .slide .slide-content a {
     -webkit-animation: translate 0.4s 0.4s both;
     animation: translate 0.4s 0.4s both;
 }
@@ -329,11 +453,13 @@ nav img {
 @-webkit-keyframes translate {
     0% {
         opacity: 0;
+        -webkit-transform: translateX(-10%);
         transform: translateX(-10%);
     }
 
     100% {
         opacity: 1;
+        -webkit-transform: translateX(0%);
         transform: translateX(0%);
     }
 }
@@ -341,31 +467,28 @@ nav img {
 @keyframes translate {
     0% {
         opacity: 0;
+        -webkit-transform: translateX(-10%);
         transform: translateX(-10%);
     }
 
     100% {
         opacity: 1;
+        -webkit-transform: translateX(0%);
         transform: translateX(0%);
     }
 }
 
-.slide-content p {
-    font-style: italic;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-}
-
-.indicators {
+#homepage #slideshow .indicators {
     height: 20vh;
     background-color: #bd1521;
 
 }
 
-.indicators > * {
+#homepage #slideshow .indicators > * {
     height: 100%;
 }
 
-.indicator {
+#homepage #slideshow .indicators .indicator {
     width: 100%;
     height: 100%;
     background-position: center;
@@ -375,91 +498,44 @@ nav img {
     overflow: hidden;
 }
 
-.indicator .indicator-content {
+#homepage #slideshow .indicators .indicator .indicator-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     color: #fff;
     background-color: #bd1521;
     width: 100%;
     height: 100%;
+    -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
+    -webkit-transition: all .25s;
     transition: all .25s;
 }
 
-.indicator:hover .indicator-content {
+#homepage #slideshow .indicators .indicator:hover .indicator-content {
+    -webkit-transform: translateY(0%);
     transform: translateY(0%);
 }
 
-.indicator .indicator-content > div {
+#homepage #slideshow .indicators .indicator .indicator-content > div {
     margin: auto;
 }
+/**** END : HOME PAGE *****/
 
-footer {
-    color: #fff;
-    background-color: #000;
-    padding: 0 16px;
-    padding-top: 100px;
-}
-
-.sitemap {
-    width: 50%;
-    margin: auto;
-    text-align: center;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #bd1521;
-}
-
-.sitemap p {
-    color: #bd1521;
-    text-transform: uppercase;
-    font-size: 18px;
-}
-
-.sitemap a {
-    text-decoration: none;
-    transition: all .25s;
-}
-
-.sitemap a:hover {
-    text-decoration: underline;
-    color: #bd1521;
-}
-
-.informations {
-    text-align: center;
-}
-
-.informations ul {
-    list-style-type: none;
-}
-
-.informations ul li {
-    display: inline-block;
-    position: relative;
-    margin-right: 5px;
-}
-
-.informations li:not(:last-child):after {
-    content: '';
-    position: relative;
-    left: 5px;
-    top: -3px;
-    width: 4px;
-    height: 4px;
-    border-radius: 100%;
-    background-color: #bd1521;
-    font-size: 30px;
-    display: inline-block;
-}
-
+/**** BEGIN : THEATRES PAGE *****/
 #theatresNav {
     position: fixed;
     top: 50%;
+    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     right: -400px;
     background-color: #000;
     color: #fff;
     font-family: "adamCgPro", sans-serif;
+    font-size: 15px;
+    -webkit-transition: all .25s;
     transition: all .25s;
+    z-index: 9;
 }
 
 #theatresNav:hover {
@@ -469,6 +545,7 @@ footer {
 #theatresNav > div {
     padding: 6px 8px;
     cursor: pointer;
+    -webkit-transition: all .25s;
     transition: all .25s;
 }
 
@@ -494,14 +571,55 @@ footer {
     margin-right: 10px;
 }
 
+.theatre-li {
+    height: 100vh;
+    padding-top: 100px;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: opacity .25s ease-in-out;
+    transition: opacity .25s ease-in-out;
+}
+
+.theatre-li > div {
+    width: 75%;
+    margin: auto;
+}
+
+.theatre-li img {
+    width: 75%;
+    height: auto;
+    float: right;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.8);
+}
+
+.theatre-li h2 {
+    -webkit-transform: translateX(-48px);
+    transform: translateX(-48px);
+    border-bottom: 1px solid #bd1521;
+}
+
+.theatre-li p {
+    padding: 0 48px;
+}
+
+.theatre-li .actionsBar {
+    -webkit-transform: translateX(-48px);
+    transform: translateX(-48px);
+}
+
+.theatre-li .date {
+    font-size: 24px;
+    font-style: italic;
+}
+/**** END : THEATRES PAGE *****/
+
+/**** BEGIN : THEATRE PAGE ****/
 video {
     background-color: #000;
     width: 100%;
     height: 100vh;
-}
-
-#theatre {
-    color: #fff;
 }
 
 #theatre .w3-bar .breadcrumb {
@@ -523,15 +641,75 @@ video {
     margin-left: 12px;
 }
 
-.synopsis {
+#theatre .w3-bar .breadcrumb div {
+    margin-top: -16px;
+    margin-left: 32px;
+}
+
+#theatre .characters {
+    margin-bottom: 128px;
+}
+
+#theatre .characters #slideshow {
+    width: 50%;
+    margin: auto;
+}
+
+#theatre .characters #slideshow .slide {
+    overflow: hidden;
+    height: 50vh;
+    -webkit-animation: opac 0.8s;
+    animation: opac 0.8s;
+}
+
+#theatre .characters #slideshow .slide .w3-row .w3-col:last-child > * {
+    transform: translateX(-64px);
+}
+
+#theatre .characters #slideshow .slide .w3-row .w3-col img {
+    max-width: 100%;
+    max-height: 50vh;
+    display: block;
+    margin-left: auto;
+}
+
+#theatre .characters #slideshow .button-slideshow {
+    padding-top: 12px;
+    text-align: center;
+}
+
+#theatre .bigQuote {
+    background-color: #bd1521;
+    padding-bottom: 64px;
+    margin-bottom: 128px;
+}
+
+#theatre .bigQuote .quote {
+    width: 50%;
+    margin: auto;
+}
+
+#theatre .bigQuote .quote p {
+    font-size: 36px;
+    text-align: center;
+}
+
+#theatre .bigQuote .quote .source {
+    width: 25%;
+    margin-left: auto;
+    border-top: 1px solid;
+    font-family: "adamCgPro", sans-serif;
+    text-align: right;
+}
+
+#theatre .synopsis {
     opacity: 0;
     width: 75%;
     margin: auto;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding: 128px 0;
 }
 
-.synopsis div:last-child {
+#theatre .synopsis div:last-child {
     padding-left: 48px;
 }
 
@@ -540,7 +718,7 @@ video {
     padding-right: 48px;
 }
 
-#theatre .description .top, #theatre .description .middle, #theatre .description .bottom {
+#theatre .synopsis, #theatre .characters, #theatre .bigQuote, #theatre .description .top, #theatre .description .middle, #theatre .description .bottom {
     opacity: 0;
 }
 
@@ -566,69 +744,159 @@ video {
     padding-top: 200px;
 }
 
-.radio-spot {
+#theatre .radio-spot {
     text-align: center;
 }
 
-.radio-spot audio {
+#theatre .radio-spot audio {
     width: 25%;
     margin: auto;
 }
+/***** END : THEATRE PAGE *****/
 
-.contact {
-    color: #fff;
-    padding-top: 100px;
-    padding-bottom: 12px;
+/***** BEGIN: ABOUT PAGE *****/
+#about .hero-image {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-attachment: fixed;
 }
 
-.contact img {
+#about .hero-image .title {
+    margin: auto;
+}
+
+#about .tablinks {
+    width: 75%;
+    margin: auto;
+    margin-top: -40px;
+    font-family: "adamCgPro", sans-serif;
+    background-color: #0b0020;
+    text-align: center
+}
+
+#about .tablinks .tablink {
+    padding: 8px 16px;
+    border-bottom: 2px solid #0b0020;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+}
+
+#about .tablinks .tablink:hover {
+    color: #bd1521;
+}
+
+#about .tablinks .tablink.active {
+    border-color: #bd1521;
+}
+
+#about .about-content {
+    padding-top: 64px;
+}
+
+#about .about-content .heading {
+    text-align: center;
+    opacity: 0;
+    width: 50%;
+    margin: auto;
+}
+
+#about .about-content .article {
+    /*display: flex;*/
+    padding: 32px;
+    opacity: 0;
+    /*height: 100vh;*/
+}
+
+#about .about-content .article .w3-row {
+    width: 75%;
+    margin: auto;
+}
+
+#about .about-content .article .w3-row .w3-col img {
+    width: 100%;
+    height: auto;
+}
+
+#about .about-content .article .w3-row .w3-col:first-child h3, #about .about-content .article .w3-row .w3-col:first-child p {
+    -webkit-transform: translateX(48px);
+    transform: translateX(48px);
+    text-align: right;
+}
+
+#about .about-content .article .w3-row .w3-col:last-child h3, #about .about-content .article .w3-row .w3-col:last-child p {
+    -webkit-transform: translateX(-48px);
+    transform: translateX(-48px);
+}
+
+/***** END : ABOUT PAGE *****/
+
+/***** BEGIN: CONTACT PAGE *****/
+#contact {
+    color: #fff;
+    padding-top: 100px;
+}
+
+#contact img {
     display: block;
     margin: auto;
     width: 50%;
 }
 
-.contact .heading {
+#contact .heading {
     text-align: center;
-    font-size: 18px;
+    font-size: 24px;
 }
 
-.contact form {
+#contact .social-media {
+    width: 20%;
+}
+
+#contact .social-media a img {
+    width: 100%;
+}
+
+#contact form {
     width: 75%;
     margin: auto;
 }
 
-.contact form .w3-label {
+#contact form .w3-label {
     color: #bd1521;
     opacity: 0;
+    -webkit-transition: all .25s;
     transition: all .25s;
 }
 
-.contact form .w3-label.visible {
+#contact form .w3-label.visible {
     opacity: 1;
 }
 
-.contact .w3-input {
+#contact .w3-input {
     border: 1px solid transparent;
     border-bottom-color: #808080;
     background-color: transparent;
     color: #fff;
 }
 
-.contact .w3-input:focus {
+#contact .w3-input:focus {
     outline: none;
     border-color: #808080;
 }
 
-.contact form textarea {
+#contact form textarea {
     height: 150px;
 }
 
-.contact .w3-btn {
+#contact .w3-btn {
     padding: 12px 24px;
 }
+/***** END : CONTACT PAGE *****/
 
-.legal-notices {
+/***** BEGIN : LEGAL NOTICES PAGE *****/
+#legal-notices {
     padding-top: 100px;
     color: #fff;
     text-align: center;
 }
+/***** END : LEGAL NOTICES PAGE *****/
