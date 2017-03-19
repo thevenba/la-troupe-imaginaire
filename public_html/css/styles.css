@@ -687,6 +687,7 @@ nav img {
 
 #footer .informations ul {
     list-style-type: none;
+    -webkit-padding-start: 0;
 }
 
 #footer .informations ul li {
@@ -1244,8 +1245,14 @@ video {
     }
 
     .animate-bottom {
-        /*        position: initial;
-                animation: none;*/
+        position: initial;
+        animation: none;
+    }
+
+    #about .animate-bottom {
+        position: relative;
+        -webkit-animation: animatebottom 0.4s both;
+        animation: animatebottom 0.4s both;
     }
     /***** END : GENERAL *****/
 
@@ -1291,6 +1298,10 @@ video {
         color:inherit;
         padding:6px 2px 6px 16px;
     }
+    
+    #loader {
+        margin-top: 36px;
+    }
 
     #footer .sitemap {
         width: 100%;
@@ -1320,9 +1331,9 @@ video {
         width: 100%;
     }
 
-    /*    #theatre .synopsis, #theatre .characters, #theatre .bigQuote, #theatre .description .top, #theatre .description .middle, #theatre .description .bottom {
-            opacity: 1;
-        }*/
+    #theatre .synopsis, #theatre .characters, #theatre .bigQuote, #theatre .description .top, #theatre .description .middle, #theatre .description .bottom, #theatre .theatre-footer {
+        opacity: 1;
+    }
 
     #theatre .synopsis {
         width: 90%;
@@ -1525,19 +1536,116 @@ video {
         -webkit-margin-before: 0.5em;
         -webkit-margin-after: 0.5em;
     }
+    
+    #loader {
+        margin-top: 68px;
+    }
+
+    #footer {
+        padding-top: 32px;
+    }
+
+    #footer .informations li:not(:last-child):after {
+        content: none;
+    }
 
     /***** BEGIN : HOME PAGE *****/
     #homepage #slideshow .slide {
         height: 100vh;
     }
-    
+
     #homepage #slideshow .slide .slide-content {
         width: 100%;
+        left: 0;
+        padding-left: 12px;
+    }
+
+    #homepage #slideshow .slide .slide-content h2 {
+        line-height: 1;
+    }
+
+    #homepage #slideshow .w3-btn {
+        top: 90%;
     }
 
     #homepage #slideshow .indicators {
         display: none;
     }
     /***** END : HOME PAGE *****/
+
+    #theatre, #theatres, #about, #contact, #legal-notices {
+        margin-top: 32px;
+        padding-bottom: 32px;
+    }
+
+    /***** BEGIN : THEATRE PAGE *****/
+    #theatre .w3-bar .breadcrumb {
+        padding: 0;
+    }
+
+    #theatre .w3-bar .breadcrumb h2 {
+        font-size: 40px;
+    }
+
+    #theatre .synopsis {
+        padding: 32px 0;
+    }
+
+    #theatre .characters {
+        margin-bottom: 32px;
+    }
+
+    #theatre .characters #slideshow {
+        max-height: 100vh;
+    }
+
+    #theatre .characters #slideshow .slide .w3-row .w3-col img {
+        max-height: 150px;
+    }
+
+    #theatre .characters #slideshow .slide .w3-row .w3-col h4 {
+        -webkit-margin-before: 0;
+        -webkit-margin-after: 0;
+    }
+
+    #theatre .bigQuote {
+        margin-bottom: 32px;
+    }
+
+    #theatre .bigQuote .quote p {
+        font-size: 18px;
+    }
+
+    #theatre .description p {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    /***** END : THEATRE PAGE *****/
+
+    /***** BEGIN : THEATRES PAGE *****/
+    .theatre-li h2, .theatre-li .actionsBar {
+        transform: none;
+    }
+    /***** END : THEATRES PAGE *****/
+    
+    /***** BEGIN : ABOUT PAGE *****/
+    #about .about-content {
+        padding-top: 32px;
+    }
+    
+    #about .about-content .heading {
+        width: 90%;
+    }
+    
+    #about .about-content .article {
+        padding-bottom: 32px;
+    }
+    /***** END : ABOUT PAGE *****/
+    
+    /***** BEGIN : CONTACT PAGE *****/
+    #contact form {
+        width: 100%;
+    }
+    /***** END : CONTACT PAGE *****/
 }
-/***** END : TABLET RESPONSIVE *****/
+/***** END : MOBILE RESPONSIVE *****/
