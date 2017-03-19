@@ -2,6 +2,34 @@
     Created on : 6 mars 2017, 12:22:12
     Author     : baptiste thevenet
 */
+
+/***** BEGIN : RESET CSS ****/
+*,*:before,*:after{box-sizing:inherit}
+html{box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{margin:0}
+article,footer,header,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+a{background-color:transparent;-webkit-text-decoration-skip:objects}
+a:active,a:hover{outline-width:0}
+img{border-style:none}
+svg:not(:root){overflow:hidden}
+button,input,select,textarea{font:inherit;margin:0}
+button,input{overflow:visible}
+button,select{text-transform:none}
+button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}
+button::-moz-focus-inner, [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner{border-style:none;padding:0}
+button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring{outline:1px dotted ButtonText}
+textarea{overflow:auto}
+[type=checkbox],[type=radio]{padding:0}
+[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}
+[type=search]{-webkit-appearance:textfield;outline-offset:-2px}
+[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+::-webkit-input-placeholder{color:inherit;opacity:0.54}
+::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+/***** END: RESET CSS *****/
+
+/***** BEGIN : GENERAL *****/
 @font-face {
     font-family: adamCgPro;
     src: url(../fonts/adamcg_pro.otf);
@@ -30,6 +58,10 @@
     font-weight: bold;
     font-style: italic;
 }
+html {
+    overflow-x: hidden;
+}
+
 
 html, body {
     width: 100%;
@@ -38,78 +70,77 @@ html, body {
 body {
     background-color: #000;
     font-family: "Crimson Text", serif;
+    font-size: 18px;
     letter-spacing: 1px;
+    line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, h6 {
+    margin: 10px 0;
+    font-family: "Mistral", cursive;
     letter-spacing: initial;
 }
 
-.large {
-    font-size: 24px;
+h1 {
+    font-size: 72px;
 }
 
-.w3-row-padding {
-    padding: 0px;
+h2 {
+    font-size: 60px;
 }
 
-.w3-row-padding > .w3-col {
-    padding: 0 8px;
+h3 {
+    font-size: 48px;
 }
 
-.w3-row-padding > .w3-col:first-child {
-    padding-left: 0;
+h4 {
+    font-size: 40px;
 }
 
-.w3-row-padding > .w3-col:last-child {
-    padding-right: 0;
+h5 {
+    font-size: 36px;
 }
 
-.shadow {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.6);
+h6 {
+    font-size: 32px;
 }
 
-.adam {
+img {
+    margin-bottom: -5px;
+}
+
+a{color:inherit}
+/***** END : GENERAL *****/
+
+/***** BEGIN : BTN, BUTTON, SUPER-BTN ****/
+.w3-btn, .w3-button {
+    border: none;
+    display: inline-block;
+    outline: 0;
+    padding: 6px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
     font-family: "adamCgPro", sans-serif;
     letter-spacing: initial;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all .25s;
 }
 
-.text-theme {
-    color: #bd1521;
+.w3-btn:hover {
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.8);
 }
 
-.w100 {
-    width: 100%;
-    height: auto;
-}
-
-.section {
-    padding-bottom: 12px;
-    padding-top: 12px;
-}
-
-.hero-image {
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.quote span {
-    font-size: 150px;
-    line-height: 0.6em;
-}
-
-.quote p {
-    font-style: italic;
-    font-size: 24px;
-    margin-top: -50px;
-    text-indent: 100px;
-}
-
-.w3-btn {
-    font-family: "adamCgPro", sans-serif;
-    letter-spacing: initial;
+.w3-button {
+    padding:8px 16px;
 }
 
 .w3-btn.theme {
@@ -132,24 +163,315 @@ h1, h2, h3, h4, h5 {
     background-color: #c59411;
 }
 
-.w3-label {
+.super-btn {
+    position: relative;
+    display: inline-block;
+    outline: 0;
+    padding: 6px 8px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    font-family: "adamCgPro", sans-serif;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+}
+
+.super-btn span:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 6px 8px;
+    background-color: #bd1521;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    -webkit-transition: all .25s;
+    transition: all .25s;
+}
+
+.super-btn:hover span:last-child {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+/***** END : BTN, BUTTON, SUPER BTN ****/
+
+/***** BEGIN : NAV *****/
+.w3-bar {
+    width: 100%;
+    overflow: hidden;
+}
+
+.w3-bar .w3-bar-item {
+    padding:8px 16px;
+    float:left;
+    background-color:inherit;
+    color:inherit;
+    width:auto;
+    border:none;
+    outline:none;
+    display:block;
+}
+
+.w3-bar .w3-dropdown-hover, .w3-bar .w3-dropdown-click {
+    position: static;
+    float: left;
+}
+
+.w3-bar-item {
+    width:100%;
+    display:block;
+    padding:6px 2px 6px 16px;
+    text-align:left;
+    background-color:inherit;
+    color:inherit;
+    border:none;
+    outline:none;
+}
+
+.w3-dropdown-click,.w3-dropdown-hover {
+    position:relative;
+    display:inline-block;
+    cursor:pointer;
+    transition: all .25s;
+}
+
+.w3-dropdown-hover:hover .w3-dropdown-content {
+    transform: translateX(0);
+    z-index:1;
+}
+
+.w3-dropdown-hover:first-child,.w3-dropdown-click:hover {
+    background-color:#ccc;
+    color:#000;
+}
+
+.w3-dropdown-hover:hover .w3-button,.w3-dropdown-click:hover .w3-button {
+    background-color:#ccc;
+    color:#000;
+}
+
+.w3-dropdown-content {
+    cursor:auto;
+    color:#000;
+    background-color:#fff;
+    position:absolute;
+    min-width:160px;
+    margin:0;
+    padding:0; 
+    transform: translateX(-150%); 
+    transition: all .25s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
+}
+
+.w3-dropdown-content a {
+    padding:6px 16px;
+    display:block;
+    text-decoration:none!important;
+    transition: all .25s;
+}
+
+.w3-dropdown-content a:hover {
+    background-color:#ccc;
+}
+/***** END : NAV *****/
+
+.w3-container:after, .w3-container:before, .w3-row:after, .w3-row:before, .w3-row-padding:after, .w3-row-padding:before, .w3-bar:before, .w3-bar:after {
+    content:"";
+    display:table;
+    clear:both;
+}
+
+/***** BEGIN : COLUMNS *****/
+.w3-row-padding > .w3-col {
+    padding: 0 8px;
+}
+
+.w3-row-padding > .w3-col:first-child {
+    padding-left: 0;
+}
+
+.w3-row-padding > .w3-col:last-child {
+    padding-right: 0;
+}
+
+.w3-col {
+    float:left;
+    width:100%;
+}
+
+.w3-col.s1 {width:8.33333%;}
+
+.w3-col.s2 {width:16.66666%;}
+
+.w3-col.s3 {width:24.99999%;}
+
+.w3-col.s4 {width:33.33333%;}
+
+.w3-col.s5 {width:41.66666%;}
+
+.w3-col.s6 {width:49.99999%;}
+
+.w3-col.s7 {width:58.33333%;}
+
+.w3-col.s8 {width:66.66666%;}
+
+.w3-col.s9 {width:74.99999%;}
+
+.w3-col.s10 {width:83.33333%;}
+
+.w3-col.s11 {width:91.66666%;}
+
+.w3-col.s12 {width:99.99999%;}
+
+@media (min-width:601px) {
+    .w3-col.m1 {width:8.33333%;}
+    .w3-col.m2 {width:16.66666%;}
+    .w3-col.m3,.w3-quarter {width:24.99999%;}
+    .w3-col.m4,.w3-third {width:33.33333%;}
+    .w3-col.m5 {width:41.66666%;}
+    .w3-col.m6,.w3-half {width:49.99999%;}
+    .w3-col.m7 {width:58.33333%;}
+    .w3-col.m8,.w3-twothird {width:66.66666%;}
+    .w3-col.m9,.w3-threequarter {width:74.99999%;}
+    .w3-col.m10 {width:83.33333%;}
+    .w3-col.m11 {width:91.66666%;}
+    .w3-col.m12 {width:99.99999%;}
+}
+
+@media (min-width:993px) {
+    .w3-col.l1 {width:8.33333%;}
+    .w3-col.l2 {width:16.66666%;}
+    .w3-col.l3 {width:24.99999%;}
+    .w3-col.l4 {width:33.33333%;}
+    .w3-col.l5 {width:41.66666%;}
+    .w3-col.l6 {width:49.99999%;}
+    .w3-col.l7 {width:58.33333%;}
+    .w3-col.l8 {width:66.66666%;}
+    .w3-col.l9 {width:74.99999%;}
+    .w3-col.l10 {width:83.33333%;}
+    .w3-col.l11 {width:91.66666%;}
+    .w3-col.l12 {width:99.99999%;}
+}
+/***** END : COLUMNS *****/
+
+/***** BEGIN : RESPONSIVE HELPERS *****/
+.w3-hide {display:none!important;}
+
+.w3-show {display:block!important;}
+
+@media (max-width:600px) {
+    .w3-hide-small {display:none!important;}
+}
+
+@media (min-width:993px) {
+    .w3-hide-large {display:none!important;}
+}
+
+@media (max-width:992px) and (min-width:601px) {
+    .w3-hide-medium {display:none!important;}
+}
+/***** END : RESPONSIVE HELPERS *****/
+
+/***** BEGIN : MISC HELPERS *****/
+.w3-left {float:left!important;}.w3-right {float:right!important;}
+
+.adam {
     font-family: "adamCgPro", sans-serif;
     letter-spacing: initial;
 }
 
+.large {
+    font-size: 24px;
+}
+
+.text-theme {
+    color: #bd1521;
+}
+.w3-center{text-align:center!important}
+.w3-display-topleft{position:absolute;left:0;top:0}.w3-display-topright{position:absolute;right:0;top:0}
+.w3-display-bottomleft{position:absolute;left:0;bottom:0}.w3-display-bottomright{position:absolute;right:0;bottom:0}
+.w3-display-middle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%)}
+.w3-display-left{position:absolute;top:50%;left:0%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
+.w3-display-right{position:absolute;top:50%;right:0%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
+.w3-display-topmiddle{position:absolute;left:50%;top:0;transform:translate(-50%,0%);-ms-transform:translate(-50%,0%)}
+.w3-display-bottommiddle{position:absolute;left:50%;bottom:0;transform:translate(-50%,0%);-ms-transform:translate(-50%,0%)}
+
+.w100 {
+    width: 100%;
+    height: auto;
+}
+
+.w3-container {padding:0.01em 16px;}
+
+.shadow {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.hero-image {
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.quote span {
+    font-size: 150px;
+    line-height: 0.6em;
+}
+
+.quote p {
+    font-style: italic;
+    font-size: 24px;
+    margin-top: -50px;
+    text-indent: 100px;
+}
+/***** END : MISC HELPERS *****/
+
+/***** BEGIN : ANIMATION HELPERS *****/
 .animate-bottom {
     position: relative;
     -webkit-animation: animatebottom 0.4s both;
     animation: animatebottom 0.4s both;
 }
 
-.animate-top {
-    position: relative;
-    -webkit-animation: animatebottom 0.4s both;
-    animation: animatebottom 0.4s both;
+@-webkit-keyframes animatebottom {
+    from {bottom:-300px;opacity:0;}
+    to {bottom:0px;opacity:1;}
 }
 
+@keyframes animatebottom {
+    from {bottom:-300px;opacity:0;}
+    to {bottom:0;opacity:1;}
+}
+
+.w3-opacity,.w3-hover-opacity:hover {
+    opacity:0.60;
+    -webkit-backface-visibility:hidden;
+}
+.w3-opacity-off,.w3-hover-opacity-off:hover {
+    opacity:1;
+    -webkit-backface-visibility:hidden;
+}
+/***** END : ANIMATION HELPERS *****/
+
+/***** BEGIN : INDEX PAGE *****/
 #nav {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
     font-family: "adamCgPro", sans-serif;
 }
 
@@ -305,11 +627,6 @@ nav img {
     padding-bottom: 128px
 }
 
-.animate-opacity {
-    -webkit-animation: opac 0.4s both;
-    animation: opac 0.4s both;
-}
-
 #footer {
     color: #fff;
     background-color: #000;
@@ -353,14 +670,16 @@ nav img {
 
 .social-media a img {
     width: 100%;
+    -webkit-filter: grayscale(1);
     filter: grayscale(1);
+    -webkit-transition: all .25s;
     transition: all .25s;
 }
 
 .social-media a:hover img {
+    -webkit-filter: grayscale(0);
     filter: grayscale(0);
 }
-
 
 #footer .informations {
     text-align: center;
@@ -388,6 +707,7 @@ nav img {
     font-size: 30px;
     display: inline-block;
 }
+/***** END : INDEX PAGE *****/
 
 /**** BEGIN : HOME PAGE *****/
 #homepage #slideshow {
@@ -574,7 +894,6 @@ nav img {
 .theatre-li {
     height: 100vh;
     padding-top: 100px;
-    color: #fff;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -663,6 +982,7 @@ video {
 }
 
 #theatre .characters #slideshow .slide .w3-row .w3-col:last-child > * {
+    -webkit-transform: translateX(-64px);
     transform: translateX(-64px);
 }
 
@@ -703,7 +1023,6 @@ video {
 }
 
 #theatre .synopsis {
-    opacity: 0;
     width: 75%;
     margin: auto;
     padding: 128px 0;
@@ -718,7 +1037,7 @@ video {
     padding-right: 48px;
 }
 
-#theatre .synopsis, #theatre .characters, #theatre .bigQuote, #theatre .description .top, #theatre .description .middle, #theatre .description .bottom {
+#theatre .synopsis, #theatre .characters, #theatre .bigQuote, #theatre .description .top, #theatre .description .middle, #theatre .description .bottom, #theatre .theatre-footer {
     opacity: 0;
 }
 
@@ -744,11 +1063,22 @@ video {
     padding-top: 200px;
 }
 
-#theatre .radio-spot {
+#theatre .theatre-footer .theatre-footer-img {
+    max-width: 600px; 
+    margin: auto; 
+    z-index: -1;
+}
+
+#theatre .theatre-footer .theatre-footer-img img {
+    width: 100%;
+}
+
+#theatre .theatre-footer .radio-spot {
+    margin-top: -256px;
     text-align: center;
 }
 
-#theatre .radio-spot audio {
+#theatre .theatre-footer .radio-spot audio {
     width: 25%;
     margin: auto;
 }
@@ -862,6 +1192,8 @@ video {
 }
 
 #contact form .w3-label {
+    font-family: "adamCgPro", sans-serif;
+    letter-spacing: initial;
     color: #bd1521;
     opacity: 0;
     -webkit-transition: all .25s;
@@ -873,6 +1205,9 @@ video {
 }
 
 #contact .w3-input {
+    padding:8px;
+    display:block;
+    width:100%;
     border: 1px solid transparent;
     border-bottom-color: #808080;
     background-color: transparent;
@@ -895,8 +1230,314 @@ video {
 
 /***** BEGIN : LEGAL NOTICES PAGE *****/
 #legal-notices {
-    padding-top: 100px;
+    padding: 100px 12px 128px 12px;
     color: #fff;
     text-align: center;
 }
 /***** END : LEGAL NOTICES PAGE *****/
+
+/***** BEGIN : TABLET RESPONSIVE *****/
+@media (max-width:992px) {
+    /***** BEGIN : GENERAL ******/
+    body {
+        /*font-size: 15px;*/
+    }
+
+    .animate-bottom {
+        /*        position: initial;
+                animation: none;*/
+    }
+    /***** END : GENERAL *****/
+
+    /***** BEGIN : INDEX PAGE *****/
+    #nav .w3-bar {
+        background-color: #000;
+    }
+
+    #mobileBar {
+        width: 100%;
+        background-color: #000;
+    }
+
+    #mobileBar > * {
+        border-top: 1px solid #bd1521!important;
+    }
+
+    #mobileBar .w3-bar-item {
+        width:100%;
+        display:block;
+        padding:6px 2px 6px 16px;
+        text-align: center;
+        background-color:inherit;
+        color:inherit;
+        border:none;
+        outline:none;
+    }
+
+    #mobileBar .w3-dropdown-click {
+        width:100%;
+    }
+
+    #mobileBar .w3-dropdown-click .w3-dropdown-content {
+        display: none;
+        min-width:100%;
+        transform: none;
+    }
+
+    #mobileBar .w3-dropdown-click .w3-button {
+        width:100%;
+        text-align: center;
+        background-color:inherit;
+        color:inherit;
+        padding:6px 2px 6px 16px;
+    }
+
+    #footer .sitemap {
+        width: 100%;
+    }
+    /***** END : INDEX PAGE *****/
+
+    #theatre, #theatres, #about, #contact, #legal-notices {
+        margin-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    /***** BEGIN : THEATRE PAGE *****/
+    video {
+        height: auto;
+        margin-top: 100px;
+    }
+
+    #theatre .w3-bar .breadcrumb h2 {
+        font-size: 48px;
+    }
+
+    #theatre .w3-bar .w3-bar-item {
+        float: none!important;
+    }
+
+    #theatre .w3-bar .w3-bar-item > a {
+        width: 100%;
+    }
+
+    /*    #theatre .synopsis, #theatre .characters, #theatre .bigQuote, #theatre .description .top, #theatre .description .middle, #theatre .description .bottom {
+            opacity: 1;
+        }*/
+
+    #theatre .synopsis {
+        width: 90%;
+    }
+
+    #theatre .synopsis div:last-child {
+        padding-left: 8px;
+    }
+
+    #theatre .characters #slideshow {
+        width: 90%;
+    }
+
+    #theatre .characters #slideshow .slide {
+        height: auto;
+    }
+
+    #theatre .characters #slideshow .slide .w3-row .w3-col img {
+        max-height: 250px;
+        margin-right: auto;
+    }
+
+    #theatre .characters #slideshow .slide .w3-row .w3-col:last-child > * {
+        transform: none;
+    }
+
+    #theatre .characters #slideshow .slide .w3-row .w3-col h4, #theatre .characters #slideshow .slide .w3-row .w3-col div {
+        text-align: center;
+    }
+
+    #theatre .bigQuote .quote {
+        width: 75%;
+    }
+
+    #theatre .bigQuote .quote p {
+        font-size: 24px;
+    }
+
+    #theatre .bigQuote .quote .source {
+        min-width: 50%;
+    }
+
+    #theatre .description .top .w3-row-padding > .w3-col {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    #theatre .description .middle img {
+        position: static;
+        top: 0;
+        width: 75%;
+    }
+
+    #theatre .description .bottom > div {
+        position: static;
+        top: 0;
+    }
+
+    #theatre .description .bottom .w3-row-padding > .w3-col {
+        padding: 0;
+    }
+
+    #theatre .description .bottom > div .w3-col:last-child {
+        padding-top: 0;
+    }
+
+    #theatre .theatre-footer .radio-spot {
+        margin-top: -128px;
+    }
+
+    #theatre .theatre-footer .radio-spot audio {
+        width: 90%;
+    }
+
+    #theatre .theatre-footer .w3-bar a {
+        display: block;
+        width: 90%;
+        margin: auto;
+        margin-top: 24px;
+    }
+    /***** END : THEATRE PAGE *****/
+
+    /***** BEGIN : THEATRES PAGE *****/
+    #theatresNav {
+        display: none;
+    }
+
+    .theatre-li {
+        height: auto;
+    }
+
+    .theatre-li > div {
+        width: 90%;
+    }
+
+    .theatre-li img {
+        width: 100%;
+    }
+
+    .theatre-li h2 {
+        font-size: 48px;
+        line-height: 1;
+    }
+
+    .theatre-li p {
+        padding: 0 0 0 12px;
+        font-size: 15px;
+    }
+
+    .theatre-li .actionsBar a {
+        font-size: 15px;
+    }
+    /***** END : THEATRES PAGE *****/
+
+    /***** BEGIN : ABOUT PAGE *****/
+    #about .tablinks {
+        width: 100%;
+        /*margin-top: -126px;*/
+    }
+
+    #about .about-content .heading {
+        width: 75%;
+    }
+
+    #about .about-content .article {
+        padding: 0;
+        padding-bottom: 128px;
+    }
+
+    #about .about-content .article .w3-row {
+        width: 90%;
+    }
+
+    #about .about-content .article .w3-row .w3-col h3 {
+        /*font-size: 48px;*/
+        line-height: 1;
+    }
+
+    #about .about-content .article .w3-row .w3-col p {
+        /*font-size: 15px;*/
+    }
+
+    #about .about-content .article .w3-row .w3-col:first-child h3, #about .about-content .article .w3-row .w3-col:first-child p, #about .about-content .article .w3-row .w3-col:last-child h3, #about .about-content .article .w3-row .w3-col:last-child p {
+        transform: none;
+    }
+    /***** END : ABOUT PAGE *****/
+
+    /***** BEGIN : CONTACT PAGE *****/
+    #contact .social-media {
+        width: 75%;
+    }
+
+    #contact form .w3-row-padding > .w3-col {
+        padding: 0;
+        margin: 1em 0;
+    }
+
+    #contact .w3-btn {
+        width: 100%;
+    }
+    /***** END : CONTACT PAGE *****/
+}
+/***** END : TABLET RESPONSIVE *****/
+
+/***** BEGIN : MOBILE RESPONSIVE *****/
+@media (max-width:600px) {
+    body {
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 60px;
+    }
+
+    h2 {
+        font-size: 48px;
+    }
+
+    h3 {
+        font-size: 40px;
+    }
+
+    h4 {
+        font-size: 36px;
+    }
+
+    h5 {
+        font-size: 34px;
+    }
+
+    h6 {
+        font-size: 24px;
+    }
+
+    .large {
+        font-size: 18px;
+    }
+
+    p {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+    }
+
+    /***** BEGIN : HOME PAGE *****/
+    #homepage #slideshow .slide {
+        height: 100vh;
+    }
+    
+    #homepage #slideshow .slide .slide-content {
+        width: 100%;
+    }
+
+    #homepage #slideshow .indicators {
+        display: none;
+    }
+    /***** END : HOME PAGE *****/
+}
+/***** END : TABLET RESPONSIVE *****/

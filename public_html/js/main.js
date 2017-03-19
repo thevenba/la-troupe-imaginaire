@@ -56,13 +56,14 @@ function loadPage(id) {
                 content.style.filter = "brightness(100%)";
                 addLoadPage();
                 toggleSlideShow();
-//                scrollTheatres();
+                forceCloseNav();
             } else if (this.readyState = 4 && this.status == 404) {
                 var content = document.getElementById("content");
                 content.innerHTML = '<div style="padding: 128px; width: 50%; margin: auto; text-align: enter">Il semble que la page demandée n\'existe pas, contactez l\'administrateur du site si le problème persiste.</div>';
                 content.style.filter = "brightness(100%)";
                 document.getElementById("loader").style.height = "0";
                 addLoadPage();
+                forceCloseNav();
             }
         };
         xhttp.open("GET", "./" + id + ".html", true);
@@ -78,65 +79,13 @@ function loadPage(id) {
 /***** BEGIN: SCROLL FUNCTIONS *****/
 
 /***** BEGIN: THEATRES *****/
-//var currentScrollTop = document.body.scrollTop;
-//var theatres;
-//var offsetTopTheatresList = new Array();
-//var isEndOfPage = false;
-//
-//function scrollTheatres() {
-//    if (document.getElementById("theatres")) {
-//        theatres = document.getElementById("theatres").children;
-//        for (var indexTheatresList = 0; indexTheatresList < theatres.length; indexTheatresList++) {
-//            offsetTopTheatresList[indexTheatresList] = theatres[indexTheatresList].offsetTop;
-//        }
-//        offsetTopTheatresList[offsetTopTheatresList.length] = document.getElementById("footer").offsetTop;
-//        var scrollTop = document.body.scrollTop;
-//        var indexCurrentTheatre = offsetTopTheatresList.indexOf(currentScrollTop);
-//        console.log(currentScrollTop);
-//        console.log(scrollTop);
-//        // Si on scroll down...
-//        if (scrollTop > currentScrollTop) {
-//            window.removeEventListener("scroll", scrollTheatres);
-//            // Si on est en bas de page...
-//            if (isEndOfPage) {
-//            } else {
-//                scrollTo(offsetTopTheatresList[indexCurrentTheatre + 1]);
-//                currentScrollTop = offsetTopTheatresList[indexCurrentTheatre + 1];
-//            }
-//            setTimeout(function () {
-//                window.addEventListener("scroll", scrollTheatres);
-//            }, 900);
-//        } else if (scrollTop < currentScrollTop) {
-//            window.removeEventListener("scroll", scrollTheatres);
-//            // Si on est en bas de page...
-//            if (isEndOfPage) {
-//                scrollTo(0, offsetTopTheatresList[offsetTopTheatresList.length - 2]);
-//            } else {
-//                scrollTo(offsetTopTheatresList[indexCurrentTheatre - 1]);
-//                currentScrollTop = offsetTopTheatresList[indexCurrentTheatre - 1];
-//            }
-//            setTimeout(function () {
-//                window.addEventListener("scroll", scrollTheatres);
-//            }, 900);
-//        } else {
-//            window.addEventListener("scroll", scrollTheatres);
-//        }
-//        
-//        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-//            isEndOfPage = true;
-//        } else {
-//            isEndOfPage = false;
-//        }
-//        console.log(currentScrollTop);
-//        offsetTopTheatresList = new Array();
-//        
-//    } else {
-//        return;
-//    }
-//}
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
         window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
+/*
+ * La fonction qui permet de scroll animé jusqu'à une destination
+ * @param Y la destination
+ */
 function scrollTo(Y) {
     var theatresLi = document.getElementsByClassName("theatre-li");
     for (var indexTheatresLi = 0; indexTheatresLi < theatresLi.length; indexTheatresLi++) {
@@ -182,8 +131,6 @@ function scrollTo(Y) {
 function easeInOutCubic(t) {
     return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 }
-
-
 /**** END: THEATRES *****/
 
 // Au scroll de la fenetre...
@@ -245,7 +192,6 @@ window.onscroll = function () {
         }
     }
 };
-
 /***** END: SCROLL FUNCTIONS *****/
 
 /***** BEGIN: NAVBAR FUNCTION *****/
@@ -259,6 +205,11 @@ function openNav() {
     } else {
         mobileBar.className = mobileBar.className.replace(" w3-show", "");
     }
+}
+
+function forceCloseNav() {
+    var mobileBar = document.getElementById("mobileBar");
+    mobileBar.className = mobileBar.className.replace(" w3-show", "");
 }
 
 /*
@@ -331,6 +282,11 @@ function showDivs(n) {
 /***** END: SLIDESHOW FUNCTIONS *****/
 
 /**** BEGIN: TAB FUNCTIONS ****/
+/*
+ * La fonction qui affiche un contenu tabbé
+ * @param tablink le bouton qui appel la fonction
+ * @param aboutContent le contenu tabbé à afficher
+ */
 function openTabbed(tablink, aboutContent) {
     var aboutContents = document.getElementsByClassName("about-content");
     for (var indexAboutContent = 0; indexAboutContent < aboutContents.length; indexAboutContent++) {
@@ -345,10 +301,10 @@ function openTabbed(tablink, aboutContent) {
     scrollTo(document.getElementsByClassName("tablinks")[0].offsetTop - 100);
 }
 /**** END: TAB FUNCTIONS *****/
-
-
-
-
+/*
+ * La fonction qui affiche le label d'un input
+ * @param input l'input
+ */
 function displayLabel(input) {
     var labels = document.getElementsByClassName("w3-label");
     for (var indexLabels = 0; indexLabels < labels.length; indexLabels++) {
@@ -361,7 +317,6 @@ function displayLabel(input) {
 
     window.onclick = function (event) {
         if (event.target != input) {
-            console.log("replace");
             label.className = label.className.replace(" visible", "");
         }
     }

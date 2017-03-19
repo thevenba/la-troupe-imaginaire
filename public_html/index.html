@@ -5,19 +5,19 @@
         <title>LA TROUPE IMAGINAIRE</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="img/logo-mini.png" type="image/png"/>
-        <link rel="stylesheet" href="css/w3.css"/>
+        <!--<link rel="stylesheet" href="css/w3.css"/>-->
         <link rel="stylesheet" href="css/styles.css"/>
         <!--<script src="https://use.fontawesome.com/ed61d7741c.js"></script>-->
     </head>
     <body>
         <header>
-            <nav id="nav" class="w3-top">
+            <nav id="nav">
                 <div class="w3-bar">
-                    <button class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="openNav()">&#9776;</button>
-                    <button class="w3-bar-item w3-button ajaxLink" data-target="home"><img src="img/logo-mini.svg"/></button>
-                    <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-bar-item w3-button w3-right w3-hide-large" onclick="openNav()" style="font-size: 24px">&#9776;</button>
+                    <button class="w3-bar-item w3-button ajaxLink" data-target="home"><img src="img/logo-mini.svg" alt="Logo de La troupe imaginaire"/></button>
+                    <div class="w3-dropdown-hover w3-hide-medium">
                         <button class="w3-button">Nos spectacles&nbsp;<strong class="text-theme">&#9660;</strong></button>
-                        <div class="w3-dropdown-content w3-card-4">
+                        <div class="w3-dropdown-content">
                             <a class="ajaxLink" href="javascript:void(0);" data-target="montserrat" style="background-image: url(img/theatres/montserrat/scene5.jpg);">Montserrat</a>
                             <a class="ajaxLink" href="javascript:void(0);" data-target="le-malade-imaginaire" style="background-image: url(img/theatres/le-malade-imaginaire/cover.jpg);">Le Malade Imaginaire</a>
                             <a class="ajaxLink" href="javascript:void(0);" data-target="l-oiseau-bleu" style="background-image: url(img/theatres/l-oiseau-bleu/cover.jpg);">L'oiseau bleu</a>
@@ -25,13 +25,13 @@
                             <a class="ajaxLink" href="javascript:void(0);" data-target="theatres" style="background-color: #bd1521;">Tous nos spectacles</a>
                         </div>
                     </div>
-                    <button class="w3-bar-item w3-button ajaxLink w3-hide-small" data-target="about">La troupe</button>
-                    <button class="w3-bar-item w3-button ajaxLink w3-hide-small" data-target="contact">Contact</button>
+                    <button class="w3-bar-item w3-button ajaxLink w3-hide-medium" data-target="about">La troupe</button>
+                    <button class="w3-bar-item w3-button ajaxLink w3-hide-medium" data-target="contact">Contact</button>
                 </div>
-                <div id="mobileBar" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
+                <div id="mobileBar" class="w3-hide w3-hide-large">
                     <div class="w3-dropdown-click">
                         <button class="w3-button" onclick="openDropdown(this)">Nos spectacles&nbsp;<strong class="text-theme">&#9660;</strong></button>
-                        <div class="w3-dropdown-content w3-card-4" style="position: relative">
+                        <div class="w3-dropdown-content" style="position: relative">
                             <a class="ajaxLink" href="javascript:void(0);" data-target="montserrat" style="background-image: url(img/theatres/montserrat/scene5.jpg);">Montserrat</a>
                             <a class="ajaxLink" href="javascript:void(0);" data-target="le-malade-imaginaire" style="background-image: url(img/theatres/le-malade-imaginaire/cover.jpg);">Le Malade Imaginaire</a>
                             <a class="ajaxLink" href="javascript:void(0);" data-target="l-oiseau-bleu" style="background-image: url(img/theatres/l-oiseau-bleu/cover.jpg);">L'oiseau bleu</a>
