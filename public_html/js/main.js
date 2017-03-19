@@ -139,9 +139,9 @@ window.onscroll = function () {
     var nav = document.getElementById("nav").firstElementChild;
     // Si le scroll est au dela de 100...
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        nav.className = "w3-bar black";
+        nav.className = "bar black";
     } else {
-        nav.className = "w3-bar";
+        nav.className = "bar";
     }
 
     var theatre = document.getElementById("theatre");
@@ -155,7 +155,7 @@ window.onscroll = function () {
         var bottom = document.getElementsByClassName("bottom")[0];
         var theatreFooter = document.getElementsByClassName("theatre-footer")[0];
         if (document.body.scrollTop > synopsis.offsetTop - screen || document.documentElement.scrollTop > synopsis.offsetTop - screen) {
-            synopsis.className = "synopsis w3-row-padding animate-bottom";
+            synopsis.className = "synopsis row-padding animate-bottom";
         }
         if (document.body.scrollTop > characters.offsetTop - screen || document.documentElement.scrollTop > characters.offsetTop - screen) {
             characters.className = "characters animate-bottom";
@@ -200,16 +200,16 @@ window.onscroll = function () {
  */
 function openNav() {
     var mobileBar = document.getElementById("mobileBar");
-    if (mobileBar.className.indexOf("w3-show") == -1) {
-        mobileBar.className += " w3-show";
+    if (mobileBar.className.indexOf("show") == -1) {
+        mobileBar.className += " show";
     } else {
-        mobileBar.className = mobileBar.className.replace(" w3-show", "");
+        mobileBar.className = mobileBar.className.replace(" show", "");
     }
 }
 
 function forceCloseNav() {
     var mobileBar = document.getElementById("mobileBar");
-    mobileBar.className = mobileBar.className.replace(" w3-show", "");
+    mobileBar.className = mobileBar.className.replace(" show", "");
 }
 
 /*
@@ -218,10 +218,10 @@ function forceCloseNav() {
  */
 function openDropdown(buttonDropdown) {
     var dropdown = buttonDropdown.nextElementSibling;
-    if (dropdown.className.indexOf("w3-show") == -1) {
-        dropdown.className += " w3-show";
+    if (dropdown.className.indexOf("show") == -1) {
+        dropdown.className += " show";
     } else {
-        dropdown.className = dropdown.className.replace(" w3-show", "");
+        dropdown.className = dropdown.className.replace(" show", "");
     }
 }
 /***** END: NAVBAR FUNCTION *****/
@@ -272,9 +272,9 @@ function showDivs(n) {
     }
     if (dots.length !== 0) {
         for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+            dots[i].className = dots[i].className.replace(" opacity-off", "");
         }
-        dots[slideIndex - 1].className += " w3-opacity-off";
+        dots[slideIndex - 1].className += " opacity-off";
     }
     slide[slideIndex - 1].style.display = "block";
     slide[slideIndex - 1].firstElementChild.style.dislay = "block";
@@ -306,12 +306,12 @@ function openTabbed(tablink, aboutContent) {
  * @param input l'input
  */
 function displayLabel(input) {
-    var labels = document.getElementsByClassName("w3-label");
+    var labels = document.getElementsByClassName("label");
     for (var indexLabels = 0; indexLabels < labels.length; indexLabels++) {
         labels[indexLabels].className = labels[indexLabels].className.replace("visible", "");
     }
     var label = input.previousElementSibling;
-    if (label.className != "w3-label visible") {
+    if (label.className != "label visible") {
         input.previousElementSibling.className += " visible";
     }
 
