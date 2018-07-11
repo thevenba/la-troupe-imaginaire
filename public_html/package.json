@@ -1,0 +1,11 @@
+{
+  "name": "la-troupe-imaginaire",
+  "version": "1.0.0",
+  "author": "Baptiste Thevenet",
+  "dependencies": {},
+  "devDependencies": {
+    "google-closure-compiler": "^20170521.0.0",
+    "grunt": "^1.0.1",
+    "grunt-postcss": "^0.8.0"
+  }
+}

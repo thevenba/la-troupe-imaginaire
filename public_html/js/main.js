@@ -4,7 +4,7 @@ var pop = false;
 
 window.onpopstate = function () {
     hasParamURL();
-}
+};
 
 /*
  * La fonction vérifie si l'URL à un parametre valide
@@ -15,7 +15,7 @@ function hasParamURL() {
     if (queryURL) {
         pop = true;
         document.getElementById("loader").style.height = "100vh";
-        document.getElementById("content").style.filter = "brightness(0)";
+//        document.getElementById("content").style.filter = "brightness(0)";
         loadPage(queryURL[1]);
     } else {
         loadPage("home");
@@ -33,9 +33,9 @@ function addLoadPage() {
     for (var indexAjaxLinks = 0; indexAjaxLinks < ajaxLinks.length; indexAjaxLinks++) {
         ajaxLinks[indexAjaxLinks].onclick = function () {
             document.getElementById("loader").style.height = "100vh";
-            document.getElementById("content").style.filter = "brightness(0)";
+//            document.getElementById("content").style.filter = "brightness(0)";
             loadPage(this.getAttribute("data-target"));
-        }
+        };
     }
 }
 
@@ -53,15 +53,17 @@ function loadPage(id) {
                 var content = document.getElementById("content");
                 content.innerHTML = this.responseText;
                 document.getElementById("loader").style.height = "0";
-                content.style.filter = "brightness(100%)";
+//                content.style.filter = "brightness(100%)";
+                resetScroll();
                 addLoadPage();
                 toggleSlideShow();
                 forceCloseNav();
             } else if (this.readyState = 4 && this.status == 404) {
                 var content = document.getElementById("content");
                 content.innerHTML = '<div style="padding: 128px; width: 50%; margin: auto; text-align: enter">Il semble que la page demandée n\'existe pas, contactez l\'administrateur du site si le problème persiste.</div>';
-                content.style.filter = "brightness(100%)";
+//                content.style.filter = "brightness(100%)";
                 document.getElementById("loader").style.height = "0";
+                resetScroll();
                 addLoadPage();
                 forceCloseNav();
             }
@@ -74,6 +76,11 @@ function loadPage(id) {
         pop = false;
     }
 }
+
+function resetScroll() {
+    var elem = !isNaN(document.documentElement.scrollTop) ? document.documentElement : document.body;
+    elem.scrollTop = 0;
+};
 /***** END: NAVIGATATION FUNCTION *****/
 
 /***** BEGIN: SCROLL FUNCTIONS *****/
@@ -86,14 +93,14 @@ window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequest
  * La fonction qui permet de scroll animé jusqu'à une destination
  * @param Y la destination
  */
-function scrollTo(Y) {
+function animateScrollTo(Y) {
     var theatresLi = document.getElementsByClassName("theatre-li");
     for (var indexTheatresLi = 0; indexTheatresLi < theatresLi.length; indexTheatresLi++) {
         theatresLi[indexTheatresLi].style.opacity = "0";
     }
 
     var start = Date.now(),
-            elem = document.documentElement.scrollTop ? document.documentElement : document.body,
+            elem = !isNaN(document.documentElement.scrollTop) ? document.documentElement : document.body,
             from = elem.scrollTop;
 
     if (from === Y) {
@@ -125,7 +132,7 @@ function scrollTo(Y) {
         }
     }
 
-    requestAnimationFrame(scroll)
+    requestAnimationFrame(scroll);
 }
 
 function easeInOutCubic(t) {
@@ -298,7 +305,7 @@ function openTabbed(tablink, aboutContent) {
     }
     document.getElementById(aboutContent).style.display = "block";
     tablink.firstElementChild.className += " active";
-    scrollTo(document.getElementsByClassName("tablinks")[0].offsetTop - 100);
+    animateScrollTo(document.getElementsByClassName("tablinks")[0].offsetTop - 100);
 }
 /**** END: TAB FUNCTIONS *****/
 /*
@@ -319,5 +326,9 @@ function displayLabel(input) {
         if (event.target != input) {
             label.className = label.className.replace(" visible", "");
         }
-    }
+    };
+}
+
+function play(video) {
+    video.play();
 }
